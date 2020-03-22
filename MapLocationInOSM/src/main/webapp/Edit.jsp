@@ -148,11 +148,11 @@ div {
 	<div id="row">
 		<div class="column1">
 		<b><h2 style="color:blue;">Address Info</h2></b>
-			<form action="/addData">
+			<form action="/update">
+			<input type="hidden" name="id" id="id" value=${data.id}>
 				<input type="hidden" name="lattitude"
-					id="lat" size=12 onkeypress="check()"> <input type="hidden"
-					name="longitude" id="lon" size=12><br>
-				<input type="hidden" value=""${data.id}"">	
+					id="lat" size=12 onkeypress="check()" value="${data.lattitude}"> <input type="hidden"
+					name="longitude" id="lon" size=12 value="${data.longitude}"><br>
 				<lebel><b style="color:red;">Place:</b></lebel>
 				<br> <input type="text" name="addr" id="addr" size="50"
 					width="100" style="font-size: 18px; padding-left: 10px;"
