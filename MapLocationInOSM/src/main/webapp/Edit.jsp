@@ -153,10 +153,10 @@ div {
 				<input type="hidden" name="lattitude"
 					id="lat" size=12 onkeypress="check()" value="${data.lattitude}"> <input type="hidden"
 					name="longitude" id="lon" size=12 value="${data.longitude}"><br>
-				<lebel><b style="color:red;">Place:</b></lebel>
-				<br> <input type="text" name="addr" id="addr" size="50"
+				<lebel><b style="color:red;">Place:</b></lebel><br>
+				<br> <input type="search" name="addr" id="addr" size="50"
 					width="100" style="font-size: 18px; padding-left: 10px;"
-					placeholder="Name of Place" value="${data.addr}"><br>
+					placeholder="Name of Place" value="${data.addr}" onchange="search();"><br>
 				<br>
 				<lebel><b style="color:red;">District:</b></lebel>
 				<br> <input type="text" name="dis" id="dis" size="50"
@@ -223,6 +223,14 @@ div {
 			document.getElementById('lon').value = lon;
 			myMarker.bindPopup("Lat " + lat + "<br />Lon " + lon).openPopup();
 		});
+		
+		function search()
+        {
+            document.getElementById("addr").value =  new L.Control.GeoSearch({
+             provider: new L.GeoSearch.Provider.OpenStreetMap()
+             });
+        }
+
 
 		function viewNew() {
 			var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
@@ -299,7 +307,25 @@ div {
 	</script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script>
+		<script src="https://cdn.jsdelivr.net/npm/places.js@1.18.1"></script>
+<script>
+
+(function() {
+	  var placesAutocomplete = places({
+	    appId: 'pl7GZ4682FT2',
+	    apiKey: '4a55cff1deaa791f82323804576b3107',
+	    container: document.querySelector('#addr')
+	  });
+
+	  var $address = document.querySelector('#address-value')
+	  placesAutocomplete.on('change', function(e) {
+	    $address.textContent = e.suggestion.value
+	  });
+
+	  placesAutocomplete.on('clear', function() {
+	    $address.textContent = 'none';
+	  });
+})();
 		$(document).ready(function() {
 			$("#register").click(function() {
 				var plc = $("#addr").val();

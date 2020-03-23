@@ -1,0 +1,5 @@
+com\example\demo\MapLocationInOsmApplication.class
+com\example\demo\entity\MapEntity.class
+com\example\demo\controller\MapCont.class
+com\example\demo\reposetory\MApCrud.class
+com\example\demo\ServletInitializer.class

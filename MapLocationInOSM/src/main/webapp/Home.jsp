@@ -6,7 +6,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+<script src=" http://gisfile.com/js/l.control.geosearch.js"></script>
 
 <style type="text/css">
 * {
@@ -37,11 +41,13 @@
 	max-width: 980px;
 	padding: 1% 2%;
 	margin-top:5px;
-	background-image: url('Images/img_lights.jpg');
 }
 
 body {
 	width: 100%;
+	background-color:orange;
+	background-image:'https://www.globalfirepower.com/imgs/design/earth-halved.jpg';
+	background-repeat:no-repeat;
 	padding: 0;
 	margin: 0;
 }
@@ -102,8 +108,8 @@ input[type=submit] {
 
 button {
 	width: 100%;
-	background-color:yellow;
-	color:black;
+	background-color:indigo;
+	color:White;
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
@@ -140,11 +146,17 @@ input[type=submit]:hover {
 }
 
 div {
+	
 	border-radius: 2px;
+}
+
+form
+{
+    width:100%;
 }
 </style>
 </head>
-<body bgcolor="gray">
+<body>
 	<div id="row">
 		<div class="column1">
 		<b><h2 style="color:blue;">Address Info</h2></b>
@@ -153,22 +165,23 @@ div {
 					id="lat" size=12 onkeypress="check()"> <input type="hidden"
 					name="longitude" id="lon" size=12><br>
 					
-				<lebel><b style="color:red;">Place:</b></lebel>
-				<br> <input type="text" name="addr" id="addr" size="50"
+				<lebel><b style="color:black;">Place:</b></lebel><br
+				>
+				<br> <input type="search" name="addr" id="addr" size="50"
 					width="100" style="font-size: 18px; padding-left: 10px;"
 					placeholder="Name of Place"><br>
 				<br>
-				<lebel><b style="color:red;">District:</b></lebel>
+				<lebel><b style="color:black;">District:</b></lebel>
 				<br> <input type="text" name="dis" id="dis" size="50"
 					width="100" style="font-size: 18px; padding-left: 10px;"
 					placeholder="District Name"><br>
 				<br>
-				<lebel><b style="color:red;">State:</b></lebel>
+				<lebel><b style="color:black;">State:</b></lebel>
 				<br> <input type="text" name="state" id="state" size="50"
 					width="100" style="font-size: 18px; padding-left: 10px;"
 					placeholder="State Name"><br>
 				<br>
-				<lebel><b style="color:red;">Country:</b></lebel>
+				<lebel><b style="color:black;">Country:</b></lebel>
 				<br> <input type="text" name="cont" id="cont" size="50"
 					width="100" style="font-size: 18px; padding-left: 10px;"
 					placeholder="Country name"><br>
@@ -226,7 +239,7 @@ div {
 			document.getElementById('lon').value = lon;
 			myMarker.bindPopup("Lat " + lat + "<br />Lon " + lon).openPopup();
 		});
-
+		
 		function viewNew() {
 			var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
 								maxZoom : 17,
@@ -302,7 +315,29 @@ div {
 	</script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script>
+		<script src="https://cdn.jsdelivr.net/npm/places.js@1.18.1"></script>
+	
+<script>
+
+
+(function() {
+	  var placesAutocomplete = places({
+	    appId: 'pl7GZ4682FT2',
+	    apiKey: '4a55cff1deaa791f82323804576b3107',
+	    container: document.querySelector('#addr')
+	  });
+
+	  var $address = document.querySelector('#address-value')
+	  placesAutocomplete.on('change', function(e) {
+	    $address.textContent = e.suggestion.value
+	  });
+
+	  placesAutocomplete.on('clear', function() {
+	    $address.textContent = 'none';
+	  });
+})();
+
+
 		$(document).ready(function() {
 			$("#register").click(function() {
 				var plc = $("#addr").val();
