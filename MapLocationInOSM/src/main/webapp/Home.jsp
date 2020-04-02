@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Leaflet Address Lookup and Coordinates</title>
+<title>RCA Address Details</title>
 <meta charset="utf-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -208,14 +208,14 @@ form
 
 		var options = {
 			center : [ startlat, startlon ],
-			zoom : 9
+			zoom :17
 		}
 
 		document.getElementById('lat').value = startlat;
 		document.getElementById('lon').value = startlon;
 
 		var map = L.map('map', options);
-		var nzoom = 10;
+		var nzoom = 15;
 		
 		var OpenStreetMap_Mapnik = L.tileLayer(
 						'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
