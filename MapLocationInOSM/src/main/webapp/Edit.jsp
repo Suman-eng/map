@@ -312,8 +312,8 @@ div {
 
 (function() {
 	  var placesAutocomplete = places({
-	    appId: 'pl7GZ4682FT2',
-	    apiKey: '4a55cff1deaa791f82323804576b3107',
+	    appId: 'pl7GZ4682FT2&%&%^$#%@##!@@~',
+	    apiKey: '4a55cff1deaa791f82323804576b3107%#%$%$^#%@$@#!#!%#^#^',
 	    container: document.querySelector('#addr')
 	  });
 
